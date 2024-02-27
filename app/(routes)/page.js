@@ -10,6 +10,7 @@ export default function Home() {
     const unsubscribe = getPlayers((players) => {
       // Sort players by score in descending order
       players.sort((a, b) => b.score - a.score)
+      players = players.slice(0, 10)
       console.log('Updated players: ', players)
       setLeaderboard([...players])
     })
