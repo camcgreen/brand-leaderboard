@@ -20,12 +20,26 @@ export default function Create() {
   return (
     <>
       <Header />
-      <main>
-        <h1>Create</h1>
-        <form onSubmit={handleSubmit}>
-          <input type='text' placeholder='name' />
-          <input type='number' placeholder='0' />
-          <input type='submit' value='Submit' />
+      <main className='fixed right-1/2 bottom-1/2 translate-x-1/2 translate-y-1/2'>
+        {/* <h1 className='text-4xl text-center mb-16'>ADD A PLAYER</h1> */}
+        <form onSubmit={handleSubmit} className='flex flex-col'>
+          <input
+            type='text'
+            placeholder='PLAYER NAME'
+            className='border border-black rounded-full bg-transparent p-8 mb-8 flex justify-center items-center text-center'
+          />
+          <input
+            type='number'
+            step='1'
+            pattern='\d+'
+            placeholder='0+'
+            className='border border-black rounded-full bg-transparent p-8 mb-8 flex justify-center items-center text-center'
+          />
+          <input
+            type='submit'
+            value='SUBMIT'
+            className='cursor-pointer rounded-full bg-black text-white p-8 mb-8 flex justify-center items-center text-center hover:bg-gray-900 transition-colors duration-300 ease-in-out'
+          />
         </form>
       </main>
     </>
