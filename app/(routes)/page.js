@@ -19,7 +19,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className='flex flex-col h-screen-sm overflow-hidden'>
+    <div className='flex flex-col h-screen-sm'>
       <HeaderLeaderboard />
       <main className='flex-grow flex flex-col justify-between'>
         <section className='flex-grow flex flex-col justify-center items-center'>
