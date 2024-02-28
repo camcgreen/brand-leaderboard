@@ -23,7 +23,7 @@ export default function Home() {
       <ul>
         {leaderboard.map((player) => {
           return (
-            <Link href={`/update/${player.id}`}>
+            <Link href={`/update/${player.id}`} key={player.id}>
               <li key={player.id}>
                 {player.name} - {player.score}
               </li>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { addPlayer } from '@/app/utils/helpers'
+import Header from '@/app/components/header'
 
 export default function Create() {
   const handleSubmit = async (e) => {
@@ -17,13 +18,16 @@ export default function Create() {
   }
 
   return (
-    <main>
-      <h1>Create</h1>
-      <form onSubmit={handleSubmit}>
-        <input type='text' placeholder='name' />
-        <input type='number' placeholder='0' />
-        <input type='submit' value='Submit' />
-      </form>
-    </main>
+    <>
+      <Header />
+      <main>
+        <h1>Create</h1>
+        <form onSubmit={handleSubmit}>
+          <input type='text' placeholder='name' />
+          <input type='number' placeholder='0' />
+          <input type='submit' value='Submit' />
+        </form>
+      </main>
+    </>
   )
 }
