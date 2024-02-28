@@ -26,13 +26,15 @@ export default function Home() {
           <ul className='flex flex-col w-full px-12 pt-12'>
             {leaderboard.map((player, i) => {
               return (
-                <div className='flex justify-between items-center mb-12 text-4xl'>
+                <div
+                  className='flex justify-between items-center mb-12 text-4xl'
+                  key={player.id}
+                >
                   <div className='bg-[#D9D9D9] mx-6 flex justify-center items-center h-full aspect-square rounded-full'>
                     <p className='text-center'>{i + 1}</p>
                   </div>
                   <Link
                     href={`/update/${player.id}`}
-                    key={player.id}
                     className='bg-[#D9D9D9] flex justify-between flex-grow p-6 rounded-full'
                   >
                     <p>{player.name.toUpperCase()}</p>
@@ -44,7 +46,13 @@ export default function Home() {
           </ul>
         </section>
         <section className='bg-[#D9D9D9] text-end px-12 py-12'>
-          <p>DD/MM/YYYY</p>
+          <p>
+            {new Date().toLocaleDateString('en-GB', {
+              day: '2-digit',
+              month: '2-digit',
+              year: 'numeric',
+            })}
+          </p>
         </section>
       </main>
     </div>
