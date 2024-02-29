@@ -24,29 +24,41 @@ export default function Home() {
       <main className='flex-grow flex flex-col justify-between'>
         <section className='flex-grow flex flex-col justify-center items-center'>
           <ul className='flex flex-col w-full px-12 pt-12'>
-            {leaderboard.map((player, i) => {
-              return (
-                <div
-                  className='flex justify-between items-center mb-12 text-4xl'
-                  key={player.id}
-                >
-                  <div className='bg-[#D9D9D9] mx-6 flex justify-center items-center h-full aspect-square rounded-full'>
-                    <p className='text-center'>{i + 1}</p>
-                  </div>
-                  <Link
-                    href={`/update/${player.id}`}
-                    className='bg-[#D9D9D9] flex justify-between flex-grow p-6 rounded-full'
+            {leaderboard &&
+              leaderboard.map((player, i) => {
+                return (
+                  <div
+                    className='flex justify-between items-center mb-12 text-4xl'
+                    key={player.id}
                   >
-                    <p>{player.name.toUpperCase()}</p>
-                    <p>{player.score}</p>
-                  </Link>
-                </div>
-              )
-            })}
+                    <div className='bg-gradient-to-r from-[#D9D9D9] from-30% to-[#BABABA] to-90%  mx-6 flex justify-center items-center h-full aspect-square rounded-full'>
+                      {i == 0 ? (
+                        <img
+                          src='/images/crown.svg'
+                          alt='crown'
+                          className='w-12 h-12'
+                        />
+                      ) : (
+                        <p className='text-center'>{i + 1}</p>
+                      )}
+                    </div>
+                    <Link
+                      href={`/update/${player.id}`}
+                      className='bg-gradient-to-r from-[#BABABA] from-0% to-[#D9D9D9] to-15% flex justify-between flex-grow p-6 rounded-full'
+                    >
+                      <p>{player.name.toUpperCase()}</p>
+                      <p>{player.score}</p>
+                    </Link>
+                  </div>
+                )
+              })}
           </ul>
         </section>
-        <section className='bg-[#D9D9D9] text-end px-12 py-12'>
-          <p>
+        <section className='bg-[#D9D9D9] px-12 py-12 flex justify-between'>
+          <Link href='/create'>
+            <p>ADD PLAYER</p>
+          </Link>
+          <p className='text-end'>
             {new Date().toLocaleDateString('en-GB', {
               day: '2-digit',
               month: '2-digit',

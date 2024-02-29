@@ -10,9 +10,9 @@ import {
   onSnapshot,
   orderBy,
   limit,
+  deleteDoc,
 } from 'firebase/firestore'
 
-// Add a player to the leaderboard
 export const addPlayer = async (playerName, initialScore) => {
   try {
     const q = query(collection(db, 'players'), where('name', '==', playerName))
@@ -46,12 +46,23 @@ export const updatePlayerScore = async (playerId, newScore) => {
   }
 }
 
-// Get all players in real time
 export const getPlayers = (callback) => {
   const q = query(collection(db, 'players'))
   const unsubscribe = onSnapshot(q, (snapshot) => {
     const players = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
     callback(players)
   })
-  return unsubscribe // Call this function to stop listening for updates
+  return unsubscribe
+}
+
+export const deletePlayer = async (playerId) => {
+  try {
+    const playerRef = doc(db, 'players', playerId)
+    await deleteDoc(playerRef)
+    console.log('Player deleted with ID: ', playerId)
+    return true
+  } catch (error) {
+    console.error('Error deleting player: ', error)
+    return false
+  }
 }
