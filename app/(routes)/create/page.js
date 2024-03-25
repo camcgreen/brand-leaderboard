@@ -3,8 +3,10 @@
 import { useEffect, useState } from 'react'
 import { addPlayer } from '@/app/utils/helpers'
 import Header from '@/app/components/header'
+import { useRouter } from 'next/navigation'
 
 export default function Create() {
+  const router = useRouter()
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -12,6 +14,7 @@ export default function Create() {
 
     if (success) {
       alert('Player added')
+      router.push('/')
     } else {
       alert('Player already exists')
     }

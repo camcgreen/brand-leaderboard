@@ -19,6 +19,7 @@ export default function Update() {
 
     if (success) {
       alert('Player score updated')
+      router.push('/')
     } else {
       alert('Player does not exist')
     }
